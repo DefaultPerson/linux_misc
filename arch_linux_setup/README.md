@@ -2,6 +2,8 @@
 Очень много информации своровано отсюда [ссылка](https://docs.google.com/document/d/1IjTxl7LaPKJyRoLpGEhm4ptBhob_jRgLLQpMugS7qe8/edit),
 в файле можно найти полезные советы по оптимизации
 
+[Программа](https://www.ventoy.net/en/download.html) для записи мультизагрузочной флешки
+
 ## Основные команды которые вам понадобятся
     sudo pacman -S	    # Установить программу из основного архива.
     sudo pacman -Syu    # Выполнить полное обновление  системы и репозиториев
@@ -250,4 +252,5 @@ Intel
 #### для себя
 https://superuser.com/questions/1063240/libvirt-failed-to-initialize-a-valid-firewall-backend
 https://redos.red-soft.ru/base/arm/os-virtual/qemu-kvm/
+https://www.phoronix.com/scan.php?page=news_item&px=VirtIO-GPU-Vulkan-Mesa-RFC
 [мой тг](https://t.me/clear_account)
