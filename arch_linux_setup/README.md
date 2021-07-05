@@ -64,7 +64,7 @@ iwd у нас нету,вставим ethernet кабель/usb-модем(те�
 
     sudo pacman -Syi
     sudo pacman -S iwd
-    systemctl —now enable systemd-networkd systemd-resolved iwd
+    systemctl —now enable systemd-networkd systemd-resolved iwd  (перед now два -)
     iwctl
     device list
     station устройство scan
@@ -121,9 +121,9 @@ Intel
 
 #### Установка программ(то что вам не нужно уберите из списка)
 
-    sudo pacman -Syu base-devel nano git firefox vlc steam bleachbit  grub-customizer unrar unzip steam-native-runtime 
-    file-roller qbittorrent unace lrzip squashfs-tools terminology discord telegram-desktop nautilus neofetch flameshot 
-    pycharm-professional
+    sudo pacman -Syu nano git firefox vlc steam grub-customizer
+    file-roller qbittorrent lrzip squashfs-tools terminology discord telegram-desktop nautilus neofetch flameshot 
+    
 
 #### Установка yay
     
@@ -132,12 +132,12 @@ Intel
     cd yay
     $ makepkg -si
 
-#### Установка программ из 
+#### Установка программ из aur
 
-    yay -S google-chrome
+    yay -S google-chrome pycharm-professional
 
 #### Установка i3
-    sudo pacman -S xorg-server xorg-xinit i3-gaps i3status rofi xterm terminator nitrogen
+    sudo pacman -S xorg-server xorg-xinit i3-gaps i3status rofi nitrogen
     echo 'exec i3' >> ~/.xinitrc
 #### Установим локаль
     sudo nano /etc/locale.gen
@@ -240,6 +240,21 @@ Intel
 * -b 1.0:0.7 уровень яркости день:ночь
 * -t 6500:3200 цветовая температура день:ночь
 * -l 45:39 укороченные координаты местонахождения latitude:longitude (ширина:долгота).
+#### Для флешек
+Чтобы монтировать флешку сначала узнайте ее имя
+
+    ls /dev/sd*
+Затем смонтируйте ее
+
+    mount /dev/имя флешки папка куда смонтировать
+
+Когда будете вынимать, размонтируйте флешку
+
+    umount /dev/имя флешки
+
+Если занята
+
+    umount -f -l
 
 #### Про полибар(альтернатива i3status)
 
