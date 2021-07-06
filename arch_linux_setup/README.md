@@ -1,17 +1,6 @@
-https://www.youtube.com/watch?v=i4uzOJylRBw
-
-https://www.youtube.com/watch?v=D3ISUBliahs
-
-https://www.linuxsecrets.com/archlinux-wiki/wiki.archlinux.org/index.php%3Ftitle=Xorg_(%25D0%25A0%25D1%2583%25D1%2581%25D1%2581%25D0%25BA%25D0%25B8%25D0%25B9)&mobileaction=toggle_view_mobile.html
-
-https://wiki.archlinux.org/title/Chroot_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
-
-https://unixforum.org/viewtopic.php?t=48011
-
-
 # Установка
-Очень много информации своровано отсюда [ссылка](https://docs.google.com/document/d/1IjTxl7LaPKJyRoLpGEhm4ptBhob_jRgLLQpMugS7qe8/edit),
-в файле можно найти полезные советы по оптимизации
+Некоторая информация взята отсюда [ссылка](https://docs.google.com/document/d/1IjTxl7LaPKJyRoLpGEhm4ptBhob_jRgLLQpMugS7qe8/edit),
+в файле можно найти полезные советы по оптимизации(не рекомендую ставить драйверы как в этом документе, есть вероятность что вы не загрузитесь)
 
 [Программа](https://www.ventoy.net/en/download.html) для записи мультизагрузочной флешки
 
@@ -37,27 +26,27 @@ https://unixforum.org/viewtopic.php?t=48011
     station устройство connect SSID
     exit
 
-#### Псевдографический установщик
-Для простоты установки скачаем archfi
-
-    pacman -Su
-    pacman -S wget
-    wget matmoul.github.io/archfi
-    sh archfi
+#### Легкий установщик
+Для простоты установки воспользуемся установщиком archlinux(доступен в новых версиях с 1 апреля 2021)
+    
+    pacman -Suy
+    archlinuxinstall
 
 Ищем видео об установке и устанавливаем(внимание на разметку и загрузчик если система устанавливается в dual boot)
+Когда спросит о пакетах которые желаем установить
+
+    nano git sudo nmcli
 
 ***
 
 
 
 # Настройка
-После перезагрузки
+После перезагрузки, заходим на root
 #### Добавление пользователя
     useradd -m user
     passwd user
 #### Настройка sudo
-    pacman -S sudo
     nano /etc/sudoers
 Найдем строку root
 
@@ -71,17 +60,18 @@ https://unixforum.org/viewtopic.php?t=48011
 #### Интернет
 Выходим из рута exit, входим под созданным юзером.
 
-iwd у нас нету,вставим ethernet кабель/usb-модем(телефон)
+Если вам нужен вайфай:
 
-    sudo pacman -Syi
-    sudo pacman -S iwd
-    systemctl —now enable systemd-networkd systemd-resolved iwd  (перед now два -)
-    iwctl
-    device list
-    station устройство scan
-    station устройство get-networks
-    station устройство connect SSID
-
+    systemctl start NetworkManager
+    systemctl enable --now NetworkManager
+    nmcli device
+    
+ После того как убедились что девайс опознан
+ 
+    nmcli device wifi connect SSID password PASS
+    
+Смотрим нужный девайс wifi, обычно это wlan0
+Если нет пользуемся usb модемом или кабелем.
 #### Установим драйвера видеокарты
     sudo nano /etc/pacman.conf
 Найдем 
@@ -96,44 +86,15 @@ iwd у нас нету,вставим ethernet кабель/usb-модем(те�
 Сохраним и обновим базу 
 
     sudo pacman -Syu
-Nvidia
 
-    sudo pacman -S nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader 
-    lib32-vulkan-icd-loader lib32-opencl-nvidia opencl-nvidia libxnvctrl 
-    sudo mkinitcpio -P 
-NVIDIA DKMS Performance
+Вообще драйвера уже установленны в процессе установки archlinux(мы просто дали на будущее разрешение искать пакеты в доп. репозитории), вы можете поэксперементировать и установить драйвера как в документе(который в заголовке), но я не рекомендую этого делать если вы новичок.
 
-    git clone https://aur.archlinux.org/nvidia-dkms-performance.git
-    cd nvidia-dkms-performance
-    makepkg -sric 
-
-Согласитесь на разрешение конфликтов.
-
-AMD
-
-    sudo pacman -S lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
-
-Intel
-
-    sudo pacman -S lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader
-
-Данные команды выполнят установку так называемых автоматизированных DKMS драйверов, но внимание - автор использует проприетарный драйвер NVIDIA - если вы заметили ошибку или желаете более проверенный источник: GitHub.
-Внимание! У авторов отсутствует оборудование AMD, некоторые параметры для этого производителя могут устареть и являться неверными.
-
-Nvidia
-
-    sudo pacman -S nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
-AMD
-
-    sudo pacman -S lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
-Intel
-
-    sudo pacman -S lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader
+Внимание! Если у вас почему-то пакман не находит серверов, проверьте /etc/pacman.d/mirrorlist , чтобы там были раскомментированны сервера и /etc/pacman.conf ,
+чтобы если у вас раскомментирован заголовок [], после него строчка с листом зеркал тоже была раскомментированна
 
 #### Установка программ(то что вам не нужно уберите из списка)
 
-    sudo pacman -Syu nano git firefox vlc steam grub-customizer
-    file-roller qbittorrent lrzip squashfs-tools terminology discord telegram-desktop nautilus neofetch flameshot 
+    sudo pacman -Syu firefox steam file-roller qbittorrent terminology discord telegram-desktop nautilus neofetch flameshot nitrogen mc
     
 
 #### Установка yay
@@ -148,8 +109,11 @@ Intel
     yay -S google-chrome pycharm-professional
 
 #### Установка i3
-    sudo pacman -S xorg-server xorg-xinit i3-gaps i3status rofi nitrogen
+    sudo pacman -S xorg-server xorg-xinit i3-gaps i3status rofi
     echo 'exec i3' >> ~/.xinitrc
+    
+Если вдруг хотите почитать побольше о настройки [иксов](https://www.linuxsecrets.com/archlinux-wiki/wiki.archlinux.org/index.php%3Ftitle=Xorg_(%25D0%25A0%25D1%2583%25D1%2581%25D1%2581%25D0%25BA%25D0%25B8%25D0%25B9)&mobileaction=toggle_view_mobile.html)
+
 #### Установим локаль
     sudo nano /etc/locale.gen
 
@@ -209,14 +173,16 @@ Intel
 # Всякое
 
 ## Устройства
-#### Звук
+#### Управление звуком
     sudo pacman -S pavucontrol
+    
 #### Numlock
 
     sudo pacman -S numlockx
 В конфиг i3(i3/config)
 
     exec --no-startup-id numlockx on
+    
 #### Bluetooth
     sudo pacman -S bluez bluez-utils pulseaudio-bluetooth blueman
     sudo systemctl daemon-reload
@@ -230,6 +196,23 @@ Intel
 под [general]
 
 Добавить blueman-applet в автозагрузку(i3/config)
+
+
+#### Если у вас клавиатура или мышь corsair
+
+    yay -S ckb-next
+    sudo systemctl start ckb-next-daemon
+    sudo systemctl enable --now ckb-next-daemon
+    
+Все, вы можете настраивать свою перефирию
+
+#### Принтер
+
+У меня hp laserjet 1018, устанавливал я его так:
+
+    sudo pacman -S hplip ghostscript pyqt5
+    yay -S foo2zjs
+    sudo hp-setup -u
 
 #### Установка compton(для прозрачности окон)
 
@@ -279,4 +262,6 @@ Intel
 https://superuser.com/questions/1063240/libvirt-failed-to-initialize-a-valid-firewall-backend
 https://redos.red-soft.ru/base/arm/os-virtual/qemu-kvm/
 https://www.phoronix.com/scan.php?page=news_item&px=VirtIO-GPU-Vulkan-Mesa-RFC
+https://wiki.archlinux.org/title/Chroot_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
 [мой тг](https://t.me/clear_account)
+
