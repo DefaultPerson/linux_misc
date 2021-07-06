@@ -1,3 +1,14 @@
+https://www.youtube.com/watch?v=i4uzOJylRBw
+
+https://www.youtube.com/watch?v=D3ISUBliahs
+
+https://www.linuxsecrets.com/archlinux-wiki/wiki.archlinux.org/index.php%3Ftitle=Xorg_(%25D0%25A0%25D1%2583%25D1%2581%25D1%2581%25D0%25BA%25D0%25B8%25D0%25B9)&mobileaction=toggle_view_mobile.html
+
+https://wiki.archlinux.org/title/Chroot_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
+
+https://unixforum.org/viewtopic.php?t=48011
+
+
 # Установка
 Очень много информации своровано отсюда [ссылка](https://docs.google.com/document/d/1IjTxl7LaPKJyRoLpGEhm4ptBhob_jRgLLQpMugS7qe8/edit),
 в файле можно найти полезные советы по оптимизации
