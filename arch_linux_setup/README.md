@@ -263,5 +263,6 @@ https://superuser.com/questions/1063240/libvirt-failed-to-initialize-a-valid-fir
 https://redos.red-soft.ru/base/arm/os-virtual/qemu-kvm/
 https://www.phoronix.com/scan.php?page=news_item&px=VirtIO-GPU-Vulkan-Mesa-RFC
 https://wiki.archlinux.org/title/Chroot_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
+https://lumpics.ru/service-net-view-dont-run-in-windows-10/
 [мой тг](https://t.me/clear_account)
 
