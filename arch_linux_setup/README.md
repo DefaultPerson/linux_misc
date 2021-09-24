@@ -14,7 +14,7 @@ exit
 ```
 ```sh
 pacman -Suy
-archlinuxinstall
+archinstall
 ```
 В конце установки установить:
 ```sh
