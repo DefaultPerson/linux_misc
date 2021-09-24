@@ -8,7 +8,7 @@ echo '==============================================='
 sudo sed -e 's/#[multilib]/[multilib]\nInclude = /etc/pacman.d/mirrorlist' /etc/pacman.conf
 
 # Устанавливаем пакеты и обновляем установленные
-sudo pacman -Syyu --noconfirm python python-pip blueman compton discord efl epfview flameshot gcolor2 hplip htop mouserpad nm-connection-editor nitrogen telegram-desktop terminology viewnior vlc xarchiver xfce4-power-manager qt5ct pcmanfm gparted acpi acl bluez bluez-libs bluez-utils fakeroot obs i3-scripts i3status-manjaro mc tor veracrypt fish ranger steam qbittorrent terminology telegram-desktop nitrogen mc xorg-server xorg-xinit i3-gaps i3status rofi ttf-font-awesome ttf-dejavu micro chromium virtualbox numlockx pavucontrol bluez bluez-utils pulseaudio-bluetooth virtualbox compton hplip ghostscript pyqt5 xsane xscreensaver redshift xscreensaver-arch-logolibpwquality pacman-contrib jq udisks2 xorg-xinput awk stdbuf stat mktemp gnome-disks
+sudo pacman -Syyu --noconfirm python python-pip blueman compton discord efl qpdfview flameshot gcolor2 hplip htop mousepad nm-connection-editor nitrogen telegram-desktop terminology viewnior vlc xarchiver xfce4-power-manager qt5ct pcmanfm gparted acpi acl bluez bluez-libs bluez-utils fakeroot obs-studio mc tor veracrypt fish ranger steam qbittorrent terminology telegram-desktop nitrogen mc xorg-server xorg-xinit i3-gaps i3status rofi ttf-font-awesome ttf-dejavu micro chromium virtualbox numlockx pavucontrol bluez bluez-utils pulseaudio-bluetooth virtualbox compton hplip ghostscript pyqt5 xsane xscreensaver redshift xscreensaver-arch-logo libpwquality pacman-contrib jq udisks2 xorg-xinput
 
 # Устанавливаем yay и загружаем пакеты с него
 git clone https://aur.archlinux.org/yay.git
