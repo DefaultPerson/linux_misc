@@ -426,12 +426,12 @@ margin-bottom = 5
 [module/speedtest]  
 type = custom/script  
 exec-if = hash speedtest
-exec = "/path/to/polybar-speedtest"  
+exec = "~/polybar-scripts/polybar-speedtest"  
 interval = 90
 
-[module / updates-pacman-aurhelper] 
-type = custom / script
-exec = ~ / polybar-scripts / updates-pacman-aurhelper.sh
+[module/updates-pacman-aurhelper] 
+type = custom/script
+exec = ~/polybar-scripts/updates-pacman-aurhelper.sh
 interval = 600
 
 [module/system-usb-udev]
@@ -448,6 +448,6 @@ tail = true
 click-left = ~/polybar-scripts/system-bluetooth-bluetoothctl.sh --toggle &
 
 [module/info-hackspeed] 
-type = custom / script
+type = custom/script
 exec = ~/polybar-scripts/info-hackspeed.sh
 tail = true
