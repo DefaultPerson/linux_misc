@@ -10,6 +10,9 @@ exec --no-startup-id discord
 exec --no-startup-id telegram-desktop
 exec --no-startup-id compton
 exec --no-startup-id flameshot
+exec_always --no-startup-id /home/def/.config/polybar/launch.sh  в i3 config
+exec --no-startup-id reshift -l 55.751244:37.618423 -t 6500:5000 -b 1.0:0.8
+
 
 # ГОРЯЧИЕ КЛАВИШИ
 bindsym Print exec flameshot full -c
@@ -36,12 +39,6 @@ for_window [class="Steam"] move absolute position center
 for_window [class="Mplayer"] floating enable
 for_window [class="Mplayer"] move absolute position center
 
-# КНОПКИ УПРАВЛЕНИЯ ГРОМКОСТЬЮ ДЛЯ ПУЛЬСАУДИО
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # МОДИФИКАТОР ДЛЯ УПРАВЛЕНИЯ ОКНОМ МЫШЬЮ
 floating_modifier $mod
@@ -221,7 +218,7 @@ bar {
 	position top
 
 	font pango: dejavu mono
-	status_command i3status
+	status_command polybar
 	colors {
 		background #282a33
 		statusline #e1e2e6
