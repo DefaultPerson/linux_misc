@@ -14,7 +14,7 @@ exit
 ```
 ```sh
 pacman -Suy
-archlinuxinstall
+archinstall
 ```
 В конце установки установить:
 ```sh
@@ -27,7 +27,11 @@ useradd -m user
 passwd user
 nano /etc/sudoers
 %sudo   ALL=(ALL:ALL) ALL – все пользователи в группе sudo имеют права на запуск любой команды
-adduser user sudo
+sudo groupadd group1
+ sudo usermod -g users user
+
+
+
 #Выходим из рута exit, входим под созданным юзером.
 systemctl start NetworkManager
 systemctl enable --now NetworkManager
