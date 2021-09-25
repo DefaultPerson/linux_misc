@@ -33,8 +33,8 @@ sudo chsh -s /usr/bin/fish
 
 # Генерируем локаль
 sudo sed -i 's/#ru_RU.UTF-8 UTF-8/ru_RU.UTF-8 UTF-8/' /etc/locale.gen
-locale-gen
-fc-cache
+sudo locale-gen
+sudo fc-cache
 
 # Устанавливаем шрифты
 sudo rm /etc/vconsole.conf
@@ -64,32 +64,12 @@ sudo hp-setup -u
 sudo touch /etc/sysctl.d/51-dmesg-restrict.conf
 sudo echo 'kernel.dmesg_restrict = 1' >> /etc/sysctl.d/51-dmesg-restrict.conf
 
-
-
-
-
-
-
-
 # Ставим защиту от перебора пароля
-
-# /etc/pam.d/passwd
-# 
-# #%PAM-1.0
-# password required pam_pwquality.so retry=2 minlen=10 difok=6 dcredit=-1 ucredit=-1 ocredit=-1 lcredit=-1 [badwords=myservice mydomain] enforce_for_root
-# password required pam_unix.so use_authtok sha512 shadow
-
-# 
-# /etc/pam.d/system-login
-# auth optional pam_faildelay.so delay=4000000
-# 
-
-
-
-
-
-
-
+echo '
+password required pam_pwquality.so retry=2 minlen=10 difok=6 dcredit=-1 ucredit=-1 ocredit=-1 lcredit=-1 [badwords=myservice mydomain] enforce_for_root
+password required pam_unix.so use_authtok sha512 shadow' >> /etc/pam.d/passwd
+echo 'auth optional pam_faildelay.so delay=4000000' >> /etc/pam.d/system-login
+sudo echo 'exec i3' >> ~/.xinitrc
 
 # Установка конфига i3
 cd 
@@ -101,13 +81,17 @@ mkdir polybar
 cd 
 cp Linux_misc/config .config/polybar
 pip install speedtest-cli
-mkdir /home/def/.config/polybar/polybar-scripts
-cd /home/def/.config/polybar/polybar-scripts
-git clone https://github.com/haideralipunjabi/polybar-speedtest
+cd
+git clone https://github.com/polybar/polybar-scripts
+cd /home/def/.config/polybar
+mkdir polybar-scripts
+cd
+cp polybar-scripts/info-hackspeed/info-hackspeed /home/def/.config/polybar/polybar-scripts
+cp polybar-scripts/system-usb-udev/system-usb-udev /home/def/.config/polybar/polybar-scripts
+cp polybar-scripts/system-bluetooth-bluetoothctl/system-bluetooth-bluetoothctl /home/def/.config/polybar/polybar-scripts
+cp polybar-scripts/polybar-speedtest/polybar-speedtest /home/def/.config/polybar/polybar-scripts
+cp polybar-scripts/updates-pacman-aurhelper/updates-pacman-aurhelper /home/def/.config/polybar/polybar-scripts
 chmod +x polybar-speedtest
-git clone https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/updates-pacman-aurhelper
-git clone https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/system-usb-udev
-git clone https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/system-bluetooth-bluetoothctl
 #  xinput list --short KEYBOARD_ID: имя вашей клавиатуры. См. Раздел «Настройка» выше. Дефолт:AT Translated Set 2 keyboard
 echo '==============================================='
 echo '===================COMPLETE===================='
