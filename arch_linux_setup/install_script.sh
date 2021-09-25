@@ -18,15 +18,7 @@ makepkg -si
 sudo echo 'exec i3' >> ~/.xinitrc
 yay -S --noconfirm ckb-next tor-browser polybar foo2zjs xscreensaver-arch-logo
 
-# Настраиваем micro
-cd
-sudo rm .config/micro/settings.json
-sudo touch .config/micro/settings.json
-sudo echo '{
-	"autosave":true,
-	"scrollspeed":2,
-	"softwrap":true,
-}' >> .config/micro/settings.json
+
 
 # Устанавливаем fish как дефолт шелл
 sudo chsh -s /usr/bin/fish
@@ -36,16 +28,7 @@ sudo sed -i 's/#ru_RU.UTF-8 UTF-8/ru_RU.UTF-8 UTF-8/' /etc/locale.gen
 sudo locale-gen
 sudo fc-cache
 
-# Устанавливаем шрифты
-sudo rm /etc/vconsole.conf
-touch /etc/vconsole.conf
-echo '
-FONT=ter-v32
-KEYMAP=us
-' >> /etc/vconsole.conf
 
-# Включаем переключение раскладки
-sudo localectl set-x11-keymap us,ru pc104 "" grp:alt_shift_toggle
 
 # Ставим демона bluetooth
 sudo systemctl daemon-reload
@@ -59,7 +42,7 @@ sudo systemctl enable --now ckb-next-daemon
 
 # Настраиваем принтер
 sudo hp-setup -u
-
+echo 'exec i3' >> ~/.xinitrc
 
 echo '==============================================='
 echo '====input "startx" and run install_script_2===='
