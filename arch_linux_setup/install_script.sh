@@ -61,15 +61,16 @@ sudo systemctl enable --now ckb-next-daemon
 sudo hp-setup -u
 
 # Ставим защиту на логи ядра
-sudo touch /etc/sysctl.d/51-dmesg-restrict.conf
-sudo echo 'kernel.dmesg_restrict = 1' >> /etc/sysctl.d/51-dmesg-restrict.conf
+su
+touch /etc/sysctl.d/51-dmesg-restrict.conf
+echo 'kernel.dmesg_restrict = 1' >> /etc/sysctl.d/51-dmesg-restrict.conf
 
 # Ставим защиту от перебора пароля
-sudo echo '
+echo '
 password required pam_pwquality.so retry=2 minlen=10 difok=6 dcredit=-1 ucredit=-1 ocredit=-1 lcredit=-1 [badwords=myservice mydomain] enforce_for_root
 password required pam_unix.so use_authtok sha512 shadow' >> /etc/pam.d/passwd
-sudo echo 'auth optional pam_faildelay.so delay=4000000' >> /etc/pam.d/system-login
-sudo echo 'exec i3' >> ~/.xinitrc
+echo 'auth optional pam_faildelay.so delay=4000000' >> /etc/pam.d/system-login
+echo 'exec i3' >> ~/.xinitrc
 
 
 startx
