@@ -9,7 +9,7 @@ sudo sed -i 's/#\[multilib\]/\[multilib\]\nInclude = \/etc\/pacman.d\/mirrorlist
 
 
 # Устанавливаем пакеты и обновляем установленные
-sudo pacman -Syyu --noconfirm python python-pip blueman compton discord efl qpdfview flameshot gcolor2 hplip htop mousepad nm-connection-editor nitrogen telegram-desktop terminology viewnior vlc xarchiver xfce4-power-manager qt5ct pcmanfm gparted acpi acl bluez bluez-libs bluez-utils fakeroot obs-studio mc tor veracrypt fish ranger steam qbittorrent terminology telegram-desktop nitrogen mc xorg-server xorg-xinit i3-gaps i3status rofi ttf-font-awesome ttf-dejavu micro chromium virtualbox numlockx pavucontrol bluez bluez-utils pulseaudio-bluetooth virtualbox compton hplip ghostscript pyqt5 xsane xscreensaver redshift libpwquality pacman-contrib jq udisks2 xorg-xinput
+sudo pacman -Syyu --noconfirm python python-pip blueman compton discord efl qpdfview flameshot gcolor2 hplip htop mousepad nm-connection-editor nitrogen telegram-desktop terminology viewnior vlc xarchiver xfce4-power-manager qt5ct pcmanfm gparted acpi acl bluez bluez-libs bluez-utils fakeroot obs-studio mc tor veracrypt fish ranger steam qbittorrent terminology telegram-desktop nitrogen mc xorg-server xorg-xinit i3-gaps i3status rofi ttf-font-awesome ttf-dejavu micro chromium virtualbox numlockx pavucontrol bluez bluez-utils pulseaudio-bluetooth virtualbox compton hplip ghostscript pyqt5 xsane redshift libpwquality pacman-contrib jq udisks2 xorg-xinput
 
 # Устанавливаем yay и загружаем пакеты с него
 git clone https://aur.archlinux.org/yay.git
@@ -19,6 +19,7 @@ sudo echo 'exec i3' >> ~/.xinitrc
 yay -S --noconfirm ckb-next tor-browser polybar foo2zjs xscreensaver-arch-logo
 
 # Настраиваем micro
+cd
 sudo rm .config/micro/settings.json
 sudo touch .config/micro/settings.json
 sudo echo '{
@@ -44,7 +45,7 @@ KEYMAP=us
 ' >> /etc/vconsole.conf
 
 # Включаем переключение раскладки
-sudo localectl set-x11-keymap us,ru pc104 "" grp:alt_shift_toggle`
+sudo localectl set-x11-keymap us,ru pc104 "" grp:alt_shift_toggle
 
 # Ставим демона bluetooth
 sudo systemctl daemon-reload
