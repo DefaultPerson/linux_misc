@@ -5,17 +5,18 @@ echo '===================INSTALL====================='
 echo '==============================================='
 
 # Добавляем мультилиб в список репозиториев pacman
-sudo sed -e 's/#[multilib]/[multilib]\nInclude = /etc/pacman.d/mirrorlist' /etc/pacman.conf
+sudo sed -i 's/#\[multilib\]/\[multilib\]\nInclude = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
+
 
 # Устанавливаем пакеты и обновляем установленные
-sudo pacman -Syyu --noconfirm python python-pip blueman compton discord efl qpdfview flameshot gcolor2 hplip htop mousepad nm-connection-editor nitrogen telegram-desktop terminology viewnior vlc xarchiver xfce4-power-manager qt5ct pcmanfm gparted acpi acl bluez bluez-libs bluez-utils fakeroot obs-studio mc tor veracrypt fish ranger steam qbittorrent terminology telegram-desktop nitrogen mc xorg-server xorg-xinit i3-gaps i3status rofi ttf-font-awesome ttf-dejavu micro chromium virtualbox numlockx pavucontrol bluez bluez-utils pulseaudio-bluetooth virtualbox compton hplip ghostscript pyqt5 xsane xscreensaver redshift xscreensaver-arch-logo libpwquality pacman-contrib jq udisks2 xorg-xinput
+sudo pacman -Syyu --noconfirm python python-pip blueman compton discord efl qpdfview flameshot gcolor2 hplip htop mousepad nm-connection-editor nitrogen telegram-desktop terminology viewnior vlc xarchiver xfce4-power-manager qt5ct pcmanfm gparted acpi acl bluez bluez-libs bluez-utils fakeroot obs-studio mc tor veracrypt fish ranger steam qbittorrent terminology telegram-desktop nitrogen mc xorg-server xorg-xinit i3-gaps i3status rofi ttf-font-awesome ttf-dejavu micro chromium virtualbox numlockx pavucontrol bluez bluez-utils pulseaudio-bluetooth virtualbox compton hplip ghostscript pyqt5 xsane xscreensaver redshift libpwquality pacman-contrib jq udisks2 xorg-xinput
 
 # Устанавливаем yay и загружаем пакеты с него
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 sudo echo 'exec i3' >> ~/.xinitrc
-yay -S --noconfirm ckb-next tor-browser polybar foo2zjs
+yay -S --noconfirm ckb-next tor-browser polybar foo2zjs xscreensaver-arch-logo
 
 # Настраиваем micro
 sudo rm .config/micro/settings.json
@@ -30,7 +31,7 @@ sudo echo '{
 sudo chsh -s /usr/bin/fish
 
 # Генерируем локаль
-sudo sed -e 's/#ru_RU.UTF-8 UTF-8/ru_RU.UTF-8 UTF-8' /etc/locale.gen
+sudo sed -i 's/#ru_RU.UTF-8 UTF-8/ru_RU.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
 fc-cache
 
@@ -49,7 +50,7 @@ sudo localectl set-x11-keymap us,ru pc104 "" grp:alt_shift_toggle`
 sudo systemctl daemon-reload
 sudo systemctl start bluetooth
 sudo systemctl enable bluetooth
-sudo sed -e 's/[general]/[general]\nEnable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
+sudo sed -i 's/\[general\]/\[general\]\nEnable=Source,Sink,Media,Socket/' /etc/bluetooth/main.conf
 
 # Ставим демона для клавиатуры корсаир
 sudo systemctl start ckb-next-daemon
