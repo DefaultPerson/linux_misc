@@ -65,15 +65,19 @@ sudo touch /etc/sysctl.d/51-dmesg-restrict.conf
 sudo echo 'kernel.dmesg_restrict = 1' >> /etc/sysctl.d/51-dmesg-restrict.conf
 
 # Ставим защиту от перебора пароля
-echo '
+sudo echo '
 password required pam_pwquality.so retry=2 minlen=10 difok=6 dcredit=-1 ucredit=-1 ocredit=-1 lcredit=-1 [badwords=myservice mydomain] enforce_for_root
 password required pam_unix.so use_authtok sha512 shadow' >> /etc/pam.d/passwd
-echo 'auth optional pam_faildelay.so delay=4000000' >> /etc/pam.d/system-login
+sudo echo 'auth optional pam_faildelay.so delay=4000000' >> /etc/pam.d/system-login
 sudo echo 'exec i3' >> ~/.xinitrc
+
+
+startx
+terminology
 
 # Установка конфига i3
 cd 
-cp Linux_misc/arch_linux_setup/config .config/i3
+sudo cp Linux_misc/arch_linux_setup/config .config/i3
 
 # Установка скриптов для полибара
 cd .config
