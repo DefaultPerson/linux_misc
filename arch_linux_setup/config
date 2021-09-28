@@ -1,4 +1,3 @@
-﻿# КЛАВИША МОДИФИКАТОР
 set $mod Mod4
 
 #АВТОЗАПУСК
@@ -14,6 +13,7 @@ exec --no-startup-id nitrogen --restore; sleep 1;
 # ГОРЯЧИЕ КЛАВИШИ
 bindsym $Print exec flameshot full -c
 bindsym $mod+Print exec flameshot gui
+bindsym $mod+d exec .config/rofi/launchers/text/launcher.sh
 
 # ПРИВЯЗКА К ВОРКСПЕЙСАМ
 
@@ -35,14 +35,6 @@ bindsym $mod+Return exec terminology
 
 # ЗАКРЫТЬ ОКНО
 bindsym $mod+Shift+q kill
-
-# ЗАПУСК DMENU ИЛИ ROFI
-bindsym $mod+d exec --no-startup-id rofi -show run
-# A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # СМЕНА ФОКУСА НА ДРУГОЕ ОКНО
 bindsym $mod+j focus left
