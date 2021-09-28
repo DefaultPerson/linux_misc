@@ -1,4 +1,5 @@
 # Ставим защиту на логи ядра
+yay -S picom-jonaburg-git
 su
 touch /etc/sysctl.d/51-dmesg-restrict.conf
 echo 'kernel.dmesg_restrict = 1' >> /etc/sysctl.d/51-dmesg-restrict.conf
@@ -29,25 +30,22 @@ KEYMAP=us
 
 # Включаем переключение раскладки
 sudo localectl set-x11-keymap us,ru pc104 "" grp:alt_shift_toggle
+
 # Установка конфига i3
-cd 
-sudo cp /home/def/Linux_misc/arch_linux_setup/config /home/def/.config/i3
+cd $HOME
+sudo cp $HOME/Linux_misc/arch_linux_setup/config $HOME/.config/i3
 
 # Установка скриптов для полибара
-cd .config
-mkdir polybar
-cd 
-cp /home/def/Linux_misc/config /home/def/.config/polybar
+cd $HOME
+cp -r Linux_misc/polybar .config
 pip install speedtest-cli
-cd
-git clone https://github.com/polybar/polybar-scripts
-cd /home/def/.config/polybar
-mkdir polybar-scripts
-cd
-cp /home/def/polybar-scripts/info-hackspeed/info-hackspeed /home/def/.config/polybar/polybar-scripts
-cp /home/def/polybar-scripts/system-usb-udev/system-usb-udev /home/def/.config/polybar/polybar-scripts
-cp /home/def/polybar-scripts/system-bluetooth-bluetoothctl/system-bluetooth-bluetoothctl /home/def/.config/polybar/polybar-scripts
-cp /home/def/polybar-scripts/polybar-speedtest/polybar-speedtest /home/def/.config/polybar/polybar-scripts
-cp /home/def/polybar-scripts/updates-pacman-aurhelper/updates-pacman-aurhelper /home/def/.config/polybar/polybar-scripts
-chmod +x polybar-speedtest
-#  xinput list --short KEYBOARD_ID: имя вашей клавиатуры. См. Раздел «Настройка» выше. Дефолт:AT Translated Set 2 keyboard
+
+chmod +x .config/polybar/launch.sh
+chmod +x .config/polybar/polybar-scripts/aur-pacman-check-updates.sh
+chmod +x .config/polybar/polybar-scripts/polybar-speedtest.py
+
+# Установка rofi
+cp -r Linux_misc/rofi .config
+
+# Установка picom
+cp Linux_misc/picom.conf .config

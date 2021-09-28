@@ -2,42 +2,28 @@
 set $mod Mod4
 
 #АВТОЗАПУСК
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id numlockx
-exec --no-startup-id blueman-applet
-exec --no-startup-id google-chrome-stable
-exec --no-startup-id discord
-exec --no-startup-id telegram-desktop
-exec --no-startup-id compton
+exec_always --no-startup-id /home/def/.config/polybar/launch.sh
+exec --no-startup-id picom --experimental-backends
+# exec --no-startup-id blueman-applet
 exec --no-startup-id flameshot
-exec_always --no-startup-id /home/def/.config/polybar/launch.sh  в i3 config
-exec --no-startup-id reshift -l 55.751244:37.618423 -t 6500:5000 -b 1.0:0.8
-
+exec --no-startup-id nitrogen --restore; sleep 1;
+# exec --no-startup-id nm-applet
+# exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id clipit
 
 # ГОРЯЧИЕ КЛАВИШИ
-bindsym Print exec flameshot full -c
+bindsym $Print exec flameshot full -c
 bindsym $mod+Print exec flameshot gui
-bindsym $mod+Shift+f exec nautilus
-bindsym $mod+F2 exec google-chrome-stable
 
 # ПРИВЯЗКА К ВОРКСПЕЙСАМ
-assign [class="google-chrome-stable"] $ws1
-assign [class="telegram-desktop"] $ws2
-assign [class="discord"] $ws3
 
 
 # ПРИЛОЖЕНИЯ В ФОКУСЕ
-assign [class="chrome"] $ws1
-assign [class="telegram-desktop"] $ws2
-assign [class="discord"] $ws3
+
 
 # ПЛАВАЮЩИЕ ПРИЛОЖЕНИЯ
-for_window [class="Firefox"] floating enable
-for_window [class="Firefox"] move absolute position center
 for_window [class="Steam"] floating enable
 for_window [class="Steam"] move absolute position center
-for_window [class="Mplayer"] floating enable
-for_window [class="Mplayer"] move absolute position center
 
 
 # МОДИФИКАТОР ДЛЯ УПРАВЛЕНИЯ ОКНОМ МЫШЬЮ
@@ -143,16 +129,6 @@ client.placeholder		#d1d9ec #262626 #011b28 #011b28
 #	client.urgent — окно требует внимания (всплывающее) 
 
 # ИМЕНА ВОРКСПЕЙСОВ И ИХ НОМЕРА
-set $ws1 "1_"
-set $ws2 "2_"
-set $ws3 "3_"
-set $ws4 "4_#"
-set $ws5 "5_#"
-set $ws6 "6_#"
-set $ws7 "7_#"
-set $ws8 "8_#"
-set $ws9 "9_#"
-set $ws10 "10_#"
 
 # ПЕРЕКЛЮЧЕНИЕ ВОРКСПЕЙСОВ
 bindsym $mod+1 workspace number $ws1
@@ -214,23 +190,23 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # НАСТРОЙКИ I3BAR
-bar {
-	position top
-
-	font pango: dejavu mono
-	status_command polybar
-	colors {
-		background #282a33
-		statusline #e1e2e6
-		separator #282a33
-
-		focused_workspace   #e1e2e6 #e1e2e6 #282a33
-		active_workspace    #373E4D #373E4D #373E4D
-		inactive_workspace  #282a33 #282a33 #e1e2e6
-		urgent_workspace    #ff0066 #ff0066 #ffffff
-		binding_mode        #ff0066 #ff0066 #ffffff
-		}
-
-}
-
-
+# bar {
+	# position top
+# 
+	# font pango: dejavu mono
+	# status_command polybar
+	# colors {
+		# background #282a33
+		# statusline #e1e2e6
+		# separator #282a33
+# 
+		# focused_workspace   #e1e2e6 #e1e2e6 #282a33
+		# active_workspace    #373E4D #373E4D #373E4D
+		# inactive_workspace  #282a33 #282a33 #e1e2e6
+		# urgent_workspace    #ff0066 #ff0066 #ffffff
+		# binding_mode        #ff0066 #ff0066 #ffffff
+		# }
+# 
+# }
+# 
+# 
