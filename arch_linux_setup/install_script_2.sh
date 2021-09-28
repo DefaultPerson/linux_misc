@@ -1,5 +1,12 @@
+#!bin/bash
+
+# Устанавливаем fish как дефолт шелл
+
+sudo chsh -s /usr/bin/fish
+
 # Ставим защиту на логи ядра
-sudo sh -c"touch /etc/sysctl.d/51-dmesg-restrict.conf"
+
+sudo sh -c "touch /etc/sysctl.d/51-dmesg-restrict.conf"
 sudo sh -c "echo 'kernel.dmesg_restrict = 1' >> /etc/sysctl.d/51-dmesg-restrict.conf"
 
 # Ставим защиту от перебора пароля

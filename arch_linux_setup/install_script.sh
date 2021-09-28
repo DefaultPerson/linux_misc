@@ -17,9 +17,6 @@ makepkg -si
 sudo echo 'exec i3' >> ~/.xinitrc
 yay -S --noconfirm ckb-next tor-browser polybar foo2zjs xscreensaver-arch-logo
 
-# Устанавливаем fish как дефолт шелл
-sudo chsh -s /usr/bin/fish
-
 # Генерируем локаль
 sudo sed -i 's/#ru_RU.UTF-8 UTF-8/ru_RU.UTF-8 UTF-8/' /etc/locale.gen
 sudo locale-gen

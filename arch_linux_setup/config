@@ -1,8 +1,5 @@
 set $mod Mod4
 
-default_border pixel 3
-default_floating_border normal
-
 #АВТОЗАПУСК
 exec_always --no-startup-id /home/def/.config/polybar/launch.sh
 exec --no-startup-id picom --experimental-backends
@@ -102,7 +99,8 @@ smart_gaps on
 font pango:monospace 14
 
 # ОТКЛЮЧЕНИЕ ЗАГОЛОВКА ОКНА
-default_border pixel
+default_border pixel 3
+default_floating_border normal
 
 # РАЗМЕР РАМОК ОКНА
 for_window [tiling] border pixel 0
@@ -124,6 +122,14 @@ client.placeholder		#d1d9ec #262626 #011b28 #011b28
 #	client.urgent — окно требует внимания (всплывающее) 
 
 # ИМЕНА ВОРКСПЕЙСОВ И ИХ НОМЕРА
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
 
 # ПЕРЕКЛЮЧЕНИЕ ВОРКСПЕЙСОВ
 bindsym $mod+1 workspace number $ws1
