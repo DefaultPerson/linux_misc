@@ -1,5 +1,8 @@
 set $mod Mod4
 
+default_border pixel 3
+default_floating_border normal
+
 #АВТОЗАПУСК
 exec_always --no-startup-id /home/def/.config/polybar/launch.sh
 exec --no-startup-id picom --experimental-backends
@@ -30,7 +33,7 @@ for_window [class="Steam"] move absolute position center
 floating_modifier $mod
 
 # ЗАПУСК ТЕРМИНАЛА
-bindsym $mod+Return exec terminology
+bindsym $mod+Return exec alacritty
 
 
 # ЗАКРЫТЬ ОКНО
