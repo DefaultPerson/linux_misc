@@ -3,6 +3,7 @@
 # Устанавливаем fish как дефолт шелл
 
 sudo chsh -s /usr/bin/fish
+chsh -s /usr/bin/fish
 
 # Ставим защиту на логи ядра
 
