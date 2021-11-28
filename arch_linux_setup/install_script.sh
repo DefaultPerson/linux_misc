@@ -8,13 +8,13 @@ echo '==============================================='
 sudo sed -i 's/#\[multilib\]/\[multilib\]\nInclude = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
 
 # Устанавливаем пакеты и обновляем установленные
-sudo pacman -Syyu --noconfirm python python-pip blueman discord efl qpdfview flameshot gcolor2 hplip htop mousepad nm-connection-editor nitrogen telegram-desktop alacritty viewnior vlc xarchiver xfce4-power-manager qt5ct pcmanfm gparted acpi acl bluez bluez-libs bluez-utils fakeroot obs-studio mc tor veracrypt fish ranger steam qbittorrent terminology telegram-desktop nitrogen mc xorg-server xorg-xinit i3-gaps i3status rofi ttf-font-awesome ttf-dejavu micro chromium virtualbox numlockx pavucontrol bluez bluez-utils pulseaudio-bluetooth virtualbox compton hplip ghostscript pyqt5 xsane redshift libpwquality pacman-contrib jq udisks2 xorg-xinput barrier
+sudo pacman -Syyu --noconfirm python python-pip blueman discord efl qpdfview flameshot gcolor2 hplip htop mousepad nm-connection-editor nitrogen telegram-desktop alacritty viewnior vlc xarchiver xfce4-power-manager qt5ct pcmanfm gparted acpi acl bluez bluez-libs bluez-utils fakeroot obs-studio mc tor veracrypt fish ranger steam qbittorrent terminology telegram-desktop nitrogen mc xorg-server xorg-xinit i3-gaps i3status rofi ttf-font-awesome ttf-dejavu micro chromium virtualbox numlockx pavucontrol bluez bluez-utils pulseaudio-bluetooth virtualbox compton hplip ghostscript pyqt5 xsane redshift libpwquality pacman-contrib jq udisks2 xorg-xinput barrier chromium
 
 # Устанавливаем yay и загружаем пакеты с него
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-sudo echo 'exec i3' >> ~/.xinitrc
+echo 'exec i3' >> ~/.xinitrc
 yay -S --noconfirm ckb-next tor-browser polybar foo2zjs xscreensaver-arch-logo
 
 # Генерируем локаль
